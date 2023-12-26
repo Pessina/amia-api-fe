@@ -12,12 +12,15 @@
       "password": "Senha",
       "login": "Entrar"
     },
-    "header": {
-      "logout": "Sair"
-    },
+
     "keysList": {
       "apiKeyNamePlaceholder": "Nome da chave API",
-      "addApiKeyButton": "Adicionar chave API"
+      "addApiKeyButton": "Adicionar chave API",
+      "apiKey": "Chave API",
+      "apiKeySaveMessage": "Salve esta chave API. Ela não será mostrada novamente."
     }
+  },
+  "header": {
+    "logout": "Sair"
   }
 }

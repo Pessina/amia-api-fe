@@ -5,14 +5,12 @@ import { Portal } from "./Portal";
 type ModalProps = {
   children: ReactNode;
   isOpen: boolean;
-  onClose: () => void;
   className?: string;
 };
 
 export const Modal: React.FC<ModalProps> = ({
   children,
   isOpen,
-  onClose,
   className,
 }) => {
   if (!isOpen) {

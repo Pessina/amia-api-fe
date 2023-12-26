@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -9,6 +9,8 @@ import { useListApiKeys, useDeleteApiKey, useAddApiKey } from "@/api/apiKeys";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { useTranslation } from "react-i18next";
+import { Modal } from "@/components/Modal";
+import { APIKeyModal } from "./components/APIKeyModal";
 
 const schema = yup.object().shape({
   apiKeyName: yup.string().required(),
@@ -27,26 +29,36 @@ const KeysListPage: FC = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [apiKey, setApiKey] = useState("");
 
   const onSubmit = async (data: { apiKeyName: string }) => {
-    await addKeyMutation.mutateAsync(data.apiKeyName);
+    const newKey = await addKeyMutation.mutateAsync(data.apiKeyName);
+    setApiKey(newKey);
+    setIsModalOpen(true);
     reset();
     refetch();
   };
 
   return (
     <div className="flex flex-col space-y-8 items-center justify-center h-full min-h-screen w-full">
+      <APIKeyModal
+        isModalOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        apiKey={apiKey}
+      />
       <ul className="w-[300px] flex flex-col items-center justify-center space-y-4">
-        {keys?.map((key) => (
-          <KeyCard
-            key={key.id}
-            name={key.name}
-            onDelete={async () => {
-              await deleteKeyMutation.mutateAsync(key.id);
-              refetch();
-            }}
-          />
-        ))}
+        {keys &&
+          keys?.map((key) => (
+            <KeyCard
+              key={key.id}
+              name={key.name}
+              onDelete={async () => {
+                await deleteKeyMutation.mutateAsync(key.id);
+                refetch();
+              }}
+            />
+          ))}
       </ul>
       <form
         onSubmit={handleSubmit(onSubmit)}
