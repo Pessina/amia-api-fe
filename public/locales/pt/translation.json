@@ -11,6 +11,9 @@
       "email": "E-mail",
       "password": "Senha",
       "login": "Entrar"
+    },
+    "header": {
+      "logout": "Sair"
     }
   }
 }
