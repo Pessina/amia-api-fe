@@ -28,7 +28,7 @@ type FormData = {
 };
 
 export default function RegisterPage() {
-  useRedirectIfLoggedIn(routes.patientList);
+  useRedirectIfLoggedIn(routes.keysList);
   const router = useRouter();
   const auth = getAuth();
   const {
@@ -58,7 +58,7 @@ export default function RegisterPage() {
         email,
       });
 
-      router.push(routes.patientList);
+      router.push(routes.keysList);
     } finally {
       setLoading(false);
     }
@@ -66,7 +66,7 @@ export default function RegisterPage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-200">
-      <Card className="space-y-4 flex flex-col items-center w-[400px]">
+      <Card className="space-y-4 flex flex-col items-center w-[400px] p-8">
         <Logo width={100} height={100} />
         <h1 className="text-3xl font-bold mb-8">{t("register")}</h1>
         <form

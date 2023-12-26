@@ -1,0 +1,16 @@
+{
+  "pages": {
+    "login": {
+      "email": "E-mail",
+      "password": "Senha",
+      "register": "Cadastrar",
+      "login": "Entrar"
+    },
+    "register": {
+      "register": "Cadastrar",
+      "email": "E-mail",
+      "password": "Senha",
+      "login": "Entrar"
+    }
+  }
+}

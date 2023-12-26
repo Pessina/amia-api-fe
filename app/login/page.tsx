@@ -26,7 +26,7 @@ type FormData = {
 };
 
 export default function LoginPage() {
-  useRedirectIfLoggedIn(routes.patientList);
+  useRedirectIfLoggedIn(routes.keysList);
   const router = useRouter();
   const auth = getAuth();
   const {
@@ -44,7 +44,7 @@ export default function LoginPage() {
       setLoading(true);
       const { email, password } = data;
       await signInWithEmailAndPassword(auth, email, password);
-      router.push(routes.patientList);
+      router.push(routes.keysList);
     } finally {
       setLoading(false);
     }

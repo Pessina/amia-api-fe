@@ -1,5 +1,5 @@
 export const routes = {
   login: "/login",
   register: "/register",
-  patientList: "/auth/patient-list",
+  keysList: "/auth/keys-list",
 };
