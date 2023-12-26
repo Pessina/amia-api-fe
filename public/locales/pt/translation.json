@@ -14,6 +14,10 @@
     },
     "header": {
       "logout": "Sair"
+    },
+    "keysList": {
+      "apiKeyNamePlaceholder": "Nome da chave API",
+      "addApiKeyButton": "Adicionar chave API"
     }
   }
 }

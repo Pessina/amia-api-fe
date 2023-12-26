@@ -10,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   right?: ReactNode;
   isRounded?: boolean;
   isTextCenter?: boolean;
+  size?: "default" | "no-padding";
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,6 +23,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       right,
       isRounded = false,
       isTextCenter,
+      size = "default",
       ...props
     },
     ref
@@ -33,12 +35,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       error: `bg-red-500 text-white font-bold`,
     };
 
+    const sizeClasses = {
+      default: `py-2 px-5`,
+      "no-padding": `p-0`,
+    };
+
     return (
       <button
         {...props}
         ref={ref}
         disabled={loading}
-        className={`flex items-center space-x-2 min-h-[48px] py-2 px-5
+        className={`flex items-center space-x-2 min-h-[48px]
+                  ${sizeClasses[size]}
                   ${variantClasses[variant]} 
                   ${props.className} 
                   ${isRounded ? "rounded-xl" : "rounded"}

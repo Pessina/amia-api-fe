@@ -17,15 +17,16 @@ const KeyCard: FC<KeyCardProps> = ({ name, onDelete }) => {
   };
 
   return (
-    <div className="flex justify-between items-center p-4 border border-gray-200 rounded-lg">
+    <div className="flex justify-between items-center px-4 border border-gray-200 rounded-lg w-full">
       <div className="text-lg font-bold">{name}</div>
       <Button
         onClick={handleDelete}
-        className="px-2 py-1 rounded flex items-center"
-        variant="error"
+        className="rounded flex items-center"
+        variant="link"
+        size="no-padding"
         loading={isDeleting}
       >
-        <RiDeleteBin6Line className="mr-1" /> Delete
+        <RiDeleteBin6Line className="text-error" />
       </Button>
     </div>
   );
